@@ -7,30 +7,51 @@
 
 #define MY_TASK_PRIORITY  2
 
-static void my_task(void *data);
+#ifndef LED_DELAY_MS
+#define LED_DELAY_MS 250
+#endif
 
-int main() {
-    stdio_init_all();
+// gpio pin number
+const int n = 15;
 
-    xTaskCreate(my_task, "application_task", configMINIMAL_STACK_SIZE, NULL, MY_TASK_PRIORITY, NULL);
-
-    vTaskStartScheduler();
-    // we should never return from FreeRTOS
-    panic_unsupported();
+// Perform initialisation
+int pico_led_init(void) {
+    gpio_init(n);
+    gpio_set_dir(n, GPIO_OUT);
 }
 
-void my_task(void *data) {
-    (void)data; // unused parameter
+// Turn the led on or off
+void pico_set_led(bool led_on) {
+    gpio_put(n, led_on);
+}
 
+static void my_task(void *data) {
+    (void)data; // unused parameter
+    bool b = false;
+    
     printf("user task started\n");
 
     for (;;) {
         // Do something interesting here
         printf("My task is running!\n");
         vTaskDelay(pdMS_TO_TICKS(1000));
+	pico_set_led(b);
+	b = !b;
     }
     // Do not let a task procedure return
     vTaskDelete(NULL);
+}
+
+int main() {
+    stdio_init_all();
+
+    pico_led_init();
+
+    xTaskCreate(my_task, "application_task", configMINIMAL_STACK_SIZE, NULL, MY_TASK_PRIORITY, NULL);
+
+    vTaskStartScheduler();
+    // we should never return from FreeRTOS
+    panic_unsupported();
 }
 
 /*
