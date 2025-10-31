@@ -5,7 +5,7 @@
 The purpose of this project is to provide a somewhat turn-key starter project
 for using FreeRTOS on Raspberry Pi Pico boards.
 
-Connect an LED to GPIO port 15 and it will flash at about 1Hz.
+Connect an LED to GPIO port 15 and it will flash at 1Hz.
 
 ![alt tag](setup.jpg)
 
