@@ -1,11 +1,11 @@
 # Raspberry Pi Pico FreeRTOS Starter
 
 The purpose of this project is to provide a starter project
-for using FreeRTOS on Raspberry Pi Pico boards.
+of how to use FreeRTOS on Raspberry Pi Pico boards.
 
-It starts as an example a task to flash an LED.
+It simply starts a freeRTOS task to flash an LED.
 
-Connect the LED to GPIO port 15 in series with a resistor and it will flash at 1Hz.
+Connect the LED to GPIO port 15 in series with a 330R resistor and it will flash at 1Hz.
 
 ![alt tag](setup.jpg)
 
