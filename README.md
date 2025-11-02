@@ -65,9 +65,6 @@ cmake .
 make
 ```
 
-> On Windows, use the Ninja generator from CMake.
-> `cmake -B . -G Ninja`
-
 3. Installation on the Pico:
 
 Hold the boot button on the pico while plugging it in to your
