@@ -39,13 +39,13 @@ set(FREERTOS_KERNEL_PATH ${CMAKE_SOURCE_DIR}/FreeRTOS)
 include(FreeRTOS_Kernel_Import.cmake)
 
 add_executable(pico-freertos-starter
-    main.c)
+    main.cpp)
 
 pico_set_program_name(pico-freertos-starter "pico-freertos-starter")
-pico_set_program_version(pico-freertos-starter "0.1")
+pico_set_program_version(pico-freertos-starter "0.2")
 
 pico_enable_stdio_uart(pico-freertos-starter 0)
-pico_enable_stdio_usb(pico-freertos-starter 1)
+pico_enable_stdio_usb(pico-freertos-starter 0)
 
 target_include_directories(pico-freertos-starter PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}

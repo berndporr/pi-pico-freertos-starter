@@ -1,20 +1,16 @@
 # Raspberry Pi Pico FreeRTOS Starter
 
-The purpose of this project is to provide a starter project
-of how to use FreeRTOS on Raspberry Pi Pico boards.
+The purpose of this project is twofold:
+ 1. to provide a starter project of how to use freeRTOS on Raspberry Pi Pico boards.
+ 2. to demonstrate a classical example: *fast interrupt* and a *slow task* changing a *state*. In this 
+    example a pushbutton switches on an LED (=fast) and switches it off 1sec later (=slow).
 
-It simply starts a freeRTOS task to flash an LED.
+## Hardware setup
 
-Connect the LED to GPIO port 15 in series with a 330R resistor and it will flash at 1Hz.
+ 1. Connect an LED to GPIO port 15 in series with a 330R resistor to GND.
+ 2. Connect a pushbutton between port 15 and GND. No need of a pullup resistor.
 
 ![alt tag](setup.jpg)
-
-- The simplest way to customize the build is to use the VS Code extension for the
-Pico SDK. The extension provides an interface to quickly reconfigure CMake for
-different boards.
-
-- The project uses the forked version of the FreeRTOS Kernel provided by
-Raspberry Pi.
 
 ## Board Support
 
