@@ -3,12 +3,12 @@
 The purpose of this project is twofold:
  1. to provide a starter project of how to use freeRTOS on Raspberry Pi Pico boards.
  2. to demonstrate a classical example: *fast interrupt* and a *slow task* changing a *state*. In this 
-    example a pushbutton switches on an LED (=fast) and switches it off 1sec later (=slow).
+    example a pushbutton switches on an LED (=fast) and switches it automatically off 1sec later (=slow).
 
 ## Hardware setup
 
  1. Connect an LED to GPIO port 15 in series with a 330R resistor to GND.
- 2. Connect a pushbutton between port 15 and GND. No need of a pullup resistor.
+ 2. Connect a pushbutton between port 15 and GND.
 
 ![alt tag](setup.jpg)
 
