@@ -15,12 +15,10 @@ The purpose of this project is twofold:
 
 ## Board Support
 
-This project should work out-of-the-box for the following boards.
+This project should work out-of-the-box for the following boards:
 
 - Raspberry Pi Pico
 - Raspberry Pi Pico W (currently set to his in `CMakeLists.txt`)
-- Raspberry Pi Pico 2
-- Raspberry Pi Pico 2W
 
 Modify this line in `CMakeLists.txt` for other board types:
 ```
