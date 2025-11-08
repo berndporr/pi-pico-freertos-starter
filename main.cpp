@@ -39,19 +39,23 @@ static void my_task(void *data) {
     bool b = false;
     
     for (;;) {
-        // Do something interesting and not just one task with a delay in it.
-	// We supposed to be doing multitasking!
-	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+	// We wait for the notification from the ISR
+ 	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+	// Delay
         vTaskDelay(pdMS_TO_TICKS(LED_DELAY_MS));
+	// LED off
 	pico_set_led(false);
     }
     vTaskDelete(NULL);
 }
 
 void gpio_isr(uint gpio, uint32_t events) {
-    static auto higher_priority_task_woken = pdFALSE;
+    // LED on
     pico_set_led(true);
-    vTaskNotifyGiveFromISR(handle_task_led, &higher_priority_task_woken);
+    // notify task
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    vTaskNotifyGiveFromISR(handle_task_led, &xHigherPriorityTaskWoken);
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 
