@@ -55,10 +55,13 @@ source ~/.bashrc
 
 ## Building and installation
 
-1. Update the submodules to clone the FreeRTOS kernel
+1. Clone this repository and update the submodules to clone the FreeRTOS kernel
 
 ```shell
-$ git submodule update --init FreeRTOS
+cd ~/pico
+git clone https://github.com/berndporr/pi-pico-freertos-starter.git
+cd pi-pico-freertos-starter
+git submodule update --init FreeRTOS
 ```
 
 2. Use `CMake` and `make` to build it:
