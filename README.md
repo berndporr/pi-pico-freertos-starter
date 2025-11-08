@@ -1,4 +1,4 @@
-# freeRTOS Raspberry Pi Pico demo: an interrupt and a task changing a state
+# freeRTOS Raspberry Pi Pico demo: interrupt and task changing state
 
 The purpose of this project is twofold:
  1. to provide a skeleton project of how to use freeRTOS on Raspberry Pi Pico boards.
@@ -24,7 +24,7 @@ detailed description of deferred interrupt handling with tasks.
 This project should work out-of-the-box for the following boards:
 
 - Raspberry Pi Pico
-- Raspberry Pi Pico W (currently set to his in `CMakeLists.txt`)
+- Raspberry Pi Pico W (currently set to this in `CMakeLists.txt`)
 
 Modify this line in `CMakeLists.txt` for other board types:
 ```
@@ -75,4 +75,4 @@ Pico's mass storage drive.
 ## Reference
 
 Check out the [FreeRTOS Kernel Book](https://github.com/FreeRTOS/FreeRTOS-Kernel-Book/blob/main/toc.md)
-to learn more about FreeRTOS and waht it offers.
+to learn more about FreeRTOS and what it offers.
