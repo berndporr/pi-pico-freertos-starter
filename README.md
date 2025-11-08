@@ -49,6 +49,8 @@ git clone https://github.com/raspberrypi/pico-sdk.git
 cd pico-sdk
 git checkout tags/2.2.0 -b sdk2.2.0
 git submodule update --init
+echo 'export PICO_SDK_PATH=~/pico/pico-sdk' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ## Building and installation
