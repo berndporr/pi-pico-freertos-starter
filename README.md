@@ -8,8 +8,9 @@ The purpose of this project is twofold:
     States are key for realtime processing which are changed by external events and internal ones.
 	
 ![alt tag](irq.png)
-Figure from: https://deepwiki.com/FreeRTOS/FreeRTOS-Kernel-Book/2.7-interrupt-management which describes interrupt management
-with tasks in detail.
+Figure from: https://deepwiki.com/FreeRTOS/FreeRTOS-Kernel-Book/2.7-interrupt-management (CC BY-SA 4.0) and
+see https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/11-Deferred-interrupt-handling for a
+detailed description of deferred interrupt handling with tasks.
 
 ## Hardware setup
 
