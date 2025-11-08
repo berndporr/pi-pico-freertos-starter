@@ -2,9 +2,10 @@
 
 The purpose of this project is twofold:
  1. to provide a starter project of how to use freeRTOS on Raspberry Pi Pico boards.
- 2. to demonstrate a classical example: a *fast interrupt* and a *slow task* changing a *state machine*. In this 
-    example a pushbutton switches on an LED (=fast) and switches it automatically off 1sec later (=slow).
-    States are key for realtime processing which are changed by external events and by internal ones.
+ 2. to demonstrate a classical example: a short/deterministic *interrupt* triggers an non-deterministic *slow task* 
+    changing a *state machine*. In this example a pushbutton switches on an LED and 
+    switches it automatically off 1sec later.
+    States are key for realtime processing which are changed by external events and internal ones.
 
 ## Hardware setup
 
