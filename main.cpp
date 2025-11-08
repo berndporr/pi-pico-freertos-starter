@@ -9,9 +9,8 @@
 
 #define LED_DELAY_MS 1000
 
-// gpio pin number
+// gpio pin numbers
 const int gpio_led = 15;
-
 const int gpio_pushbutton = 14;
 
 TaskHandle_t handle_task_led = nullptr;
@@ -34,13 +33,14 @@ void pico_set_led(bool led_on) {
     gpio_put(gpio_led, led_on);
 }
 
-static void my_task(void *data) {
-    (void)data; // unused parameter
-    bool b = false;
-    
+// Task handling all the non-deterministic or long lasting operations
+// such as switching on and off the LED and doing the delay.
+static void my_task(void*) {
     for (;;) {
 	// We wait for the notification from the ISR
  	ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+	// LED on
+	pico_set_led(true);
 	// Delay
         vTaskDelay(pdMS_TO_TICKS(LED_DELAY_MS));
 	// LED off
@@ -49,15 +49,14 @@ static void my_task(void *data) {
     vTaskDelete(NULL);
 }
 
+// The ISR does nothing else than notifying the task
+// and returns as quickly as possible.
 void gpio_isr(uint gpio, uint32_t events) {
-    // LED on
-    pico_set_led(true);
     // notify task
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     vTaskNotifyGiveFromISR(handle_task_led, &xHigherPriorityTaskWoken);
     portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
-
 
 int main() {
     // init the GPIO for the LED
@@ -65,7 +64,12 @@ int main() {
     pico_button_init();
 
     // create an freeRTOS task
-    xTaskCreate(my_task, "application_task", configMINIMAL_STACK_SIZE, NULL, MY_TASK_PRIORITY, &handle_task_led);
+    xTaskCreate(my_task,
+		"application_task",
+		configMINIMAL_STACK_SIZE,
+		NULL,
+		MY_TASK_PRIORITY,
+		&handle_task_led);
 
     gpio_set_irq_enabled_with_callback(gpio_pushbutton,
 				       GPIO_IRQ_EDGE_FALL,
@@ -74,7 +78,7 @@ int main() {
 
     // this starts effectively freeRTOS and should never return.
     vTaskStartScheduler();
-
+    
     // we should have never returned from FreeRTOS!
     panic_unsupported();
 }
