@@ -1,11 +1,15 @@
-# freeRTOS Raspberry Pi Pico demo: a fast interrupt and a slow task changing a state
+# freeRTOS Raspberry Pi Pico demo: an interrupt and a task changing a state
 
 The purpose of this project is twofold:
- 1. to provide a starter project of how to use freeRTOS on Raspberry Pi Pico boards.
- 2. to demonstrate a classical example: a short/deterministic *interrupt* triggers an non-deterministic *slow task* 
+ 1. to provide a skeleton project of how to use freeRTOS on Raspberry Pi Pico boards.
+ 2. to demonstrate a classical RT example: a short/deterministic *interrupt* triggers a non-deterministic *slow task* 
     changing a *state machine*. In this example a pushbutton switches on an LED and 
     switches it automatically off 1sec later.
     States are key for realtime processing which are changed by external events and internal ones.
+	
+![alt tag](irq.png)
+Figure from: https://deepwiki.com/FreeRTOS/FreeRTOS-Kernel-Book/2.7-interrupt-management which describes interrupt management
+with tasks in detail.
 
 ## Hardware setup
 
